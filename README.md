@@ -28,21 +28,44 @@ Cyclopus distinguishes itself through its advanced Multi-Platform Configuration 
 Ultimately, Cyclopus is designed specifically for cyber drill execution, providing drill orchestrators with real-time team collaboration features, comprehensive logging for after-action reporting, automated scoring mechanisms, and scenario-based attack playbooks. Its revolutionary architecture ensures that cybersecurity teams can train against the most sophisticated threats in realistic, multi-channel environments, preparing organizations for the complex, hybrid attacks that characterize today's threat landscape.
 
 
-# How to clone the repo
-```bash
-
+# Clone repository
 git clone https://github.com/Iankulani/cyclopus.git
 cd cyclopus
+
+# Create virtual environment
+```bash
+python3 -m venv venv
+source venv/bin/activate  # Linux/macOS
+```
+# OR
+```bash
+venv\Scripts\activate     # Windows
 ```
 
-# Install requirements
+# Install development dependencies
+
 ```bash
-pip install requirmenents.txt
+pip install -r requirements.txt
+pip install -e .
 ```
-# How to run
+# Run tests
+```bash
+python3 commands-test.py
+```
+
+# How to run the repo
 ```bash
 python3 cyclopus.py
 ```
+
+# Check code style
+
+```bash
+black cyclopus.py
+flake8 cyclopus.py
+```
+
+
 # Documentation
 
 # References
