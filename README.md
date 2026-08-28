@@ -14,3 +14,23 @@
 [![Python](https://img.shields.io/badge/python-3.x-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
 </div>
+
+# How to clone the repo
+```bash
+
+git clone https://github.com/Iankulani/cyclopus.git
+cd cyclopus
+```
+
+# Install requirements
+```bash
+pip install requirmenents.txt
+```
+# How to run
+```bash
+python3 cyclopus.py
+```
+
+# Star History
+``bash
+```
