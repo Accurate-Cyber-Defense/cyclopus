@@ -29,9 +29,10 @@ Ultimately, Cyclopus is designed specifically for cyber drill execution, providi
 
 
 # Clone repository
+```bash
 git clone https://github.com/Iankulani/cyclopus.git
 cd cyclopus
-
+```
 # Create virtual environment
 ```bash
 python3 -m venv venv
