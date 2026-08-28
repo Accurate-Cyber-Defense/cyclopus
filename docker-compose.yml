@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  cyclopus:
+    build: .
+    container_name: cyclopus
+    hostname: cyclopus
+    restart: unless-stopped
+    ports:
+      - "5000:5000"    # Web Dashboard
+      - "8080:8080"    # Phishing Server
+    volumes:
+      - ./cyclopus_data:/app/.cyclopus
+      - ./reports:/app/cyclopus_reports
+      - ./logs:/app/logs
+      - /var/run/docker.sock:/var/run/docker.sock  # Docker access
+    environment:
+      - CYCLOPUS_CONFIG_DIR=/app/.cyclopus
+      - CYCLOPUS_REPORT_DIR=/app/cyclopus_reports
+      - TZ=UTC
+    networks:
+      - cyclopus_network
+    privileged: true  # For network operations
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+      - DAC_READ_SEARCH
+    security_opt:
+      - apparmor:unconfined
+    stdin_open: true
+    tty: true
+
+  # Optional: PostgreSQL for persistent storage
+  postgres:
+    image: postgres:15-alpine
+    container_name: cyclopus_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: cyclopus
+      POSTGRES_USER: cyclopus
+      POSTGRES_PASSWORD: cyclopus_secure_password_2024
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - cyclopus_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cyclopus"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Optional: Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: cyclopus_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - cyclopus_network
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+networks:
+  cyclopus_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
+  cyclopus_data:

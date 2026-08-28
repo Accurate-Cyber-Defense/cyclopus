@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cyclopus"
+version = "1.0.0"
+description = "Ultimate Cybersecurity Command & Control Platform"
+readme = "README.md"
+authors = [
+    {name = "Ian Carter Kulani, MSc", email = "ian@cyclopus.io"}
+]
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = "https://github.com/iancarter/cyclopus"
+Bug-tracker = "https://github.com/iancarter/cyclopus/issues"
+
+[project.scripts]
+cyclopus = "cyclopus:main"
+cyclopus-check = "requirements-check:main"
+
+[tool.black]
+line-length = 120
+target-version = ['py38', 'py39', 'py310', 'py311']
+
+[tool.flake8]
+max-line-length = 120
+ignore = ["E501", "W503"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = "-v --tb=short"
+testpaths = ["."]
+python_files = ["commands-test.py"]
