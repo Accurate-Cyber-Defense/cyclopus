@@ -82,6 +82,16 @@ flake8 cyclopus.py
 
 # Documentation
 
+[![Documentation](https://iankulani.github.io/Cyclopus-Doc/)
+
+
+
+[![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://iankulani.github.io/Cyclopus-Doc/)
+
+[![Documentation](https://img.shields.io/badge/📖-Documentation-0066ff?style=for-the-badge&logo=readthedocs)](https://iankulani.github.io/Cyclopus-Doc/)
+
+
+
 # References
 
 
