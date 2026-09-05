@@ -83,6 +83,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
+import colorama
+from colorama import Style, Fore, Back
 
 # =====================
 # VERSION & METADATA
